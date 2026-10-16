@@ -7,7 +7,10 @@ TagManager:
   - Glass
   - Mouse
   - Cocktails
-  - Taps
+  - Tap1
+  - Tap2
+  - Tap3
+  - Matt
   layers:
   - Default
   - TransparentFX

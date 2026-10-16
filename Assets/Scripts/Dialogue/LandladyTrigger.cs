@@ -3,32 +3,50 @@ using TMPro;
 using Ink.Runtime;
 using System.Collections.Generic;
 
+// Script for visual trigger for Landlady. Starts dialogue and destroys itself. 
+
 public class LandladyTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject visualCue;
-    [SerializeField] private TextAsset inkJSON;
+    public GameObject visualCue;
+    public TextAsset inkJSON;
     public bool clickable;
+    private bool cueVisible = false;
+    public CustomerMovementManager customerMovementManager;
 
     private void Start()
     {
         visualCue.SetActive(false);
-        
-        Invoke("Wait", 2f); // Call the Wait method after 2 seconds
+
+        Invoke(nameof(ShowCue), 2f);
     }
 
     private void Update()
     {
-        if (clickable && Input.GetKeyDown(KeyCode.Mouse0))
+        if (clickable && cueVisible && Input.GetMouseButtonDown(0))
         {
             visualCue.SetActive(false);
-            LandladyDialogueManager.GetInstance().EnterDialogueMode(inkJSON); 
-            Destroy(gameObject);
+            cueVisible = false;
+
+            DialogueManager.GetInstance().EnterDialogueMode(
+                inkJSON,
+                () =>
+                {
+                    Invoke(nameof(Walk), 2f);
+                }
+            );
         }
     }
 
-    private void Wait()
+    private void ShowCue()
     {
         visualCue.SetActive(true);
+        cueVisible = true;
+    }
+
+    private void Walk()
+    {
+        customerMovementManager.WalkIn();
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3775e0ceb15474f9fc7e84c448a690, type: 3}
+  m_Name: VodkaCokeDouble
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRecipe
+  drinkName: VodkaCokeDouble
+  glass: 4
+  beer: 0
+  beerUnits: 0
+  spirit: 1
+  spiritUnits: 2
+  mixer: 1
+  mixerUnits: 5
+  iceUnits: 1
